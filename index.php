@@ -108,7 +108,7 @@
 
     $manzil = json_encode(
         ['inline_keyboard' => [
-        [['callback_data' => "Awesome", 'text' => "Awesome"], ['callback_data' => "So-so", 'text' => "So-so"],],
+        [['callback_data' => "Awesome", 'text' => "Awesome"], ['callback_data' => "So-So", 'text' => "So-so"],],
         ]    
     ]);
 
