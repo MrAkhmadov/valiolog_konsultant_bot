@@ -99,8 +99,10 @@
     ]);
 
     $jinsi = json_encode([
-        'inline_keyboard' => [
-        [['callback_data' => "man", 'text' => "Man"], ['callback_data' => "woman", 'text' => "Woman"],],
+        'resize_keyboard' => true,
+        'keyboard' => [
+            [['text' => "👱‍♂️Erkak"], ['text' => "👩‍🦳Ayol"],],
+            [['text' => "$cencel"],],
         ]
     ]);
 
@@ -297,7 +299,7 @@ if ($tx == "❓Savol Javob") {
             if (mb_stripos($tx, "9989") !== false) {
                 bot('sendMessage', [
                 'chat_id' => $cid,
-                'text' => "Savolingiz qabul qilindi tez orada siz bilan bog'lanamiz",
+                'text' => "Savolingiz qabul qilindi tez orada siz bilan bog'lanamiz\nIltimos bot faoliyatini baholang?",
                 'parse_mode' => 'markdown',
                 'reply_markup' => $manzil,
             ]);
