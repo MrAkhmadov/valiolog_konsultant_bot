@@ -108,7 +108,7 @@
 
     $manzil = json_encode(
         ['inline_keyboard' => [
-        [['callback_data' => "Awesome", 'text' => "Awesome"], ['callback_data' => "So-SO", 'text' => "So-so"],],
+        [['callback_data' => "Awesome", 'text' => "Awesome"], ['callback_data' => "So-so", 'text' => "So-so"],],
         ]    
     ]);
 
@@ -316,6 +316,8 @@ if ($tx == "❓Savol Javob") {
                 
     }
 }
+
+if (isset())
 
 
   
