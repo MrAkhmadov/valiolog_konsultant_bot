@@ -280,6 +280,32 @@ if ($tx == "❓Savol Javob") {
         }
     }
 
+    if ($step == "1" && $menu == "savoljavob") {
+        if ($tx == $cencel) {} else {
+            bot ('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "Telefon raqamingizni kiriting?\n(Masalan: +99897 1234567)",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $otmen,
+            ]);
+            nextTx($cid, "Savol: ".$tx);
+            step($cid);
+        }
+    }
+
+    if ($step == "2" && $menu == "savoljavob") {
+        if ($tx == $cencel) {} else {
+            bot ('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "Telefon raqamingizni kiriting?\n(Masalan: +99897 1234567)",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $otmen,
+            ]);
+            nextTx($cid, "📞Tel: ".$tx);
+            step($cid);
+        }
+    }
+
 
   
 
