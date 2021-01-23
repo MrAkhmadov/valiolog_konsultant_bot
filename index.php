@@ -102,6 +102,7 @@
         'resize_keyboard' => true,
         'keyboard' => [
             [['text' => "👱‍♂️Erkak"], ['text' => "👩‍🦳Ayol"],],
+            [['text' => "$cencel"],],
         ]
     ]);
 
