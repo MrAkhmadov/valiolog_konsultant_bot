@@ -145,17 +145,16 @@ if ($tx == "📞Aloqa") {
     bot('sendMessage', [
         'chat_id' => $cid,
         'text' => '<a href="https://t.me/yulduzoy_sultonova">👥Bizning Guruh</a>
-        <a href="https://t.me/valiolog_konsultant"> 📢Bizning kanal</a>',
+        <a href="https://t.me/valiolog_konsultant">📢Bizning kanal</a>',
         'parse_mode' => 'HTML',
         'reply_markup' => $keys,
     ]);
 }
 
-if ($tx == "Manzil") {
-    bot('sendLocation', [
+if ($tx == "🎞Video") {
+    bot('sendVideo', [
         'chat_id' => $cid,
-        'latitude' => 41.326387,
-        'longitude' => 69.229802,
+        'video' => "https://t.me/valiolog_konsultant/16",
         'reply_markup' => $keys,
     ]);
 }
@@ -247,7 +246,9 @@ if ($tx == "orqaga qaytish") {
     ]);
  }
 
-// Register start
+// Savol javob 
+
+
 
   
 
