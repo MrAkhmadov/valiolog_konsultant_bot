@@ -257,20 +257,20 @@ if ($tx == "orqaga qaytish") {
 // Savol javob 
 
 if ($tx == "❓Savol Javob") {
-    bot ('sendMessage', [
+    bot('sendMessage', [
         'chat_id' => $cid,
-        'text' => "Jinsingizni kiriting",
+        'text' => "Jinsingizni kiriting👇👇",
         'parse_mode' => 'markdown',
         'reply_markup' => $jinsi,
     ]);
     pstep($cid, "0");
     put("step/$cid.menu", "savoljavob");
-
+}
     if ($step == "0" && $menu == "savoljavob") {
         if ($tx == $cencel) {} else {
             bot ('sendMessage', [
                 'chat_id' => $cid,
-                'text' => "Savolingizni batafsil kiriting",
+                'text' => "Savolingizni batafsil kiriting:",
                 'parse_mode' => 'markdown',
                 'reply_markup' => $otmen,
             ]);
@@ -278,7 +278,7 @@ if ($tx == "❓Savol Javob") {
             step($cid);
         }
     }
-}
+
 
   
 
