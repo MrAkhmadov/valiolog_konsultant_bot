@@ -99,10 +99,8 @@
     ]);
 
     $jinsi = json_encode([
-        'resize_keyboard' => true,
-        'keyboard' => [
-            [['text' => "👱‍♂️Erkak"], ['text' => "👩‍🦳Ayol"],],
-            [['text' => "$cencel"],],
+        'inline_keyboard' => [
+        [['callback_data' => "man", 'text' => "Man"], ['callback_data' => "woman", 'text' => "Woman"],],
         ]
     ]);
 
@@ -294,17 +292,28 @@ if ($tx == "❓Savol Javob") {
     }
 
     if ($step == "2" && $menu == "savoljavob") {
-        if ($tx == $cencel) {} else {
+        if ($tx == $cencel) {
+        } else {
+            if (mb_stripos($tx, "9989") !== false) {
+                bot('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "Savolingiz qabul qilindi tez orada siz bilan bog'lanamiz",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $manzil,
+            ]);
+            nextTx($cid, "📞Tel: ".$tx);
+            step($cid);
+        } else {
             bot ('sendMessage', [
                 'chat_id' => $cid,
                 'text' => "Telefon raqamingizni kiriting?\n(Masalan: +99897 1234567)",
                 'parse_mode' => 'markdown',
                 'reply_markup' => $otmen,
             ]);
-            nextTx($cid, "📞Tel: ".$tx);
-            step($cid);
         }
+                
     }
+}
 
 
   
