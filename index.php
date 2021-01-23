@@ -144,8 +144,8 @@ if ($tx == "Biz haqimizda") {
 if ($tx == "📞Aloqa") {
     bot('sendMessage', [
         'chat_id' => $cid,
-        'text' => "<a href='https://t.me/yulduzoy_sultonova'>👥Bizning Guruh</a> <br> <a href='https://t.me/valiolog_konsultant'>👥Bizning Kanal</a>",
-        'parse_mode' => 'html',
+        'text' => '<a href="https://t.me/yulduzoy_sultonova">👥Bizning Guruh</a> ',
+        'parse_mode' => 'HTML',
         'reply_markup' => $keys,
     ]);
 }
@@ -180,7 +180,8 @@ if ($tx == "💉Salomatlik kansepsiyasi") {
         
         💥4-ОРГАНИЗМНИ ТОЗАЛАШ (йилига 2 - 3 марта)
         
-        💥5-ХАРАКАТ (5 км ва ундан ортик юриш)*",
+        💥5-ХАРАКАТ (5 км ва ундан ортик юриш) 
+        Батафсил 👇👇*",
         'parse_mode' => 'markdown',
         'reply_markup' => $kurs,
     ]);
