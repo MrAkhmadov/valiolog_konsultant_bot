@@ -144,8 +144,8 @@ if ($tx == "Biz haqimizda") {
 if ($tx == "📞Aloqa") {
     bot('sendMessage', [
         'chat_id' => $cid,
-        'text' => '<b><a href="https://t.me/yulduzoy_sultonova">👥Bizning Guruh</a><br>
-        <a href="https://t.me/valiolog_konsultant">  📢Bizning kanal</a></b>',
+        'text' => '<a href="https://t.me/yulduzoy_sultonova">👥Bizning Guruh</a>
+        <a href="https://t.me/valiolog_konsultant">  📢Bizning kanal</a>',
         'parse_mode' => 'HTML',
         'reply_markup' => $keys,
     ]);
