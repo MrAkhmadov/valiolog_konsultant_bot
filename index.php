@@ -132,11 +132,11 @@
         ]);
     }
 
-if ($tx == "Biz haqimizda") {
+if ($tx == "🗣Audio") {
     bot ('sendMessage', [
         'chat_id' => $cid,
-        'text' => "Salom bu yerga biz haqimizdagi matnlar yoziladi",
-        'parse_mode' => 'markdown',
+        'voice' => "https://t.me/valiolog_konsultant/20",
+        'caption' => 'Suv va uning foydali hususiyatlari',
         'reply_markup' => $keys,
     ]);   
 }
@@ -155,6 +155,7 @@ if ($tx == "🎞Video") {
     bot('sendVideo', [
         'chat_id' => $cid,
         'video' => "https://t.me/valiolog_konsultant/16",
+        'caption' => "📹 Salomatlik Sirlari ko'rsatuvi 1-son.",
         'reply_markup' => $keys,
     ]);
 }
