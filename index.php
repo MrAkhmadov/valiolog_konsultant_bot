@@ -317,8 +317,6 @@ if ($tx == "❓Savol Javob") {
     }
 }
 
-if (isset())
-
 
   
 
