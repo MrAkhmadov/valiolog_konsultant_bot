@@ -133,7 +133,7 @@
     }
 
 if ($tx == "🗣Audio") {
-    bot ('sendMessage', [
+    bot ('sendVoice', [
         'chat_id' => $cid,
         'voice' => "https://t.me/valiolog_konsultant/20",
         'caption' => 'Suv va uning foydali hususiyatlari',
