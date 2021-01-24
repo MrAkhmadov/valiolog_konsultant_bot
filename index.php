@@ -390,7 +390,7 @@ if ($step == "4" && $menu == "register") {
                 'chat_id' => $cid,
                 'text' => "*Malumotlar muvoffaqiyatli saqlandi*, Iltimos bot faoliyatini baholang?",
                 'parse_mode' => 'markdown',
-                'reply_markup' => $keys,
+                'reply_markup' => $manzil,
             ]);
             nextTx($cid, "Aloqa " . $tx);
             step($cid);
