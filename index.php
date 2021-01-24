@@ -358,6 +358,57 @@ if ($step == "1" && $menu == "register") {
     }
 }
 
+if ($step == "2" && $menu == "register") {
+    if ($tx == $cencel) {} else {
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "Tanlagan yo'nalish bo'yicha darajangiz qanday?",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $otmen,
+        ]);
+        nextTx($cid, "Texnologiya " . $tx);
+        step($cid);
+    }
+}
+
+if ($step == "3" && $menu == "register") {
+    if ($tx == $cencel) {} else {
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "Telefon raqamingizni kiriting",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $otmen,
+        ]);
+        nextTx($cid, "Daraja: " . $tx);
+        step($cid);
+    }
+}
+
+if ($step == "4" && $menu == "register") {
+    if ($tx == $cencel) {} else {
+        if (mb_stripos($tx, "9989") !== false) {
+            bot('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "*Malumotlar muvoffaqiyatli saqlandi*, Iltimos bot faoliyatini baholang?",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $manzil,
+            ]);
+            nextTx($cid, "Aloqa " . $tx);
+            step($cid);
+        } else {
+            bot('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "Telefon raqamingizni kiriting",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $otmen,
+            ]);
+        }
+        
+    }
+}
+
+
+
   
 
 ?>
