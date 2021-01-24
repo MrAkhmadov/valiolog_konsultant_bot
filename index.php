@@ -397,37 +397,37 @@ if ($step == "4" && $menu == "register") {
         } 
 }
 
-if (isset($data) && $stepe == "5" && $menue == "register") {
-    ACL($ida);
-    $baza = file_get_contents("step/$cbid.txt");
-    bot('sendMessage', [
-        'chat_id' => $cid,
-        'text' => "Sizning anketa tayyor bo'ldi, barcha malumotlarni tasdiqlang.",
-        'parse_mode' => 'markdown',
-        'reply_markup' => $tasdiq,
-    ]);
+// if (isset($data) && $stepe == "5" && $menue == "register") {
+//     ACL($ida);
+//     $baza = file_get_contents("step/$cbid.txt");
+//     bot('sendMessage', [
+//         'chat_id' => $cid,
+//         'text' => "Sizning anketa tayyor bo'ldi, barcha malumotlarni tasdiqlang.",
+//         'parse_mode' => 'markdown',
+//         'reply_markup' => $tasdiq,
+//     ]);
 
-    nextTx($cbid, "Rating: " . $data);
-    step($cbid);
-}
+//     nextTx($cbid, "Rating: " . $data);
+//     step($cbid);
+// }
 
-if ($data == "ok" && $stepe == "6" && $menue == "register") {
-    ACL($ida);
-    $baza = file_get_contents("step/$cbid.txt");
-    $admin = "941327405";
-    bot ('sendMessage', [
-        'chat_id' => $admin,
-        'text' => "Yangi O'quvchi",
-        'parse_mode' => 'HTML',
-        'reply_markup' => $tasdiq,
-    ]);
-    bot('sendMessage', [
-        'chat_id' => $cbid,
-        'text' => "Sizning anketangiz muvaffiqayatli yuborildi.",
-        'parse_mode' => 'markdown',
-        'reply_markup' => $keys,
-    ]);
-}
+// if ($data == "ok" && $stepe == "6" && $menue == "register") {
+//     ACL($ida);
+//     $baza = file_get_contents("step/$cbid.txt");
+//     $admin = "941327405";
+//     bot ('sendMessage', [
+//         'chat_id' => $admin,
+//         'text' => "Yangi O'quvchi",
+//         'parse_mode' => 'HTML',
+//         'reply_markup' => $tasdiq,
+//     ]);
+//     bot('sendMessage', [
+//         'chat_id' => $cbid,
+//         'text' => "Sizning anketangiz muvaffiqayatli yuborildi.",
+//         'parse_mode' => 'markdown',
+//         'reply_markup' => $keys,
+//     ]);
+// }
 
 if ($tx == $cencel || $data == "clear") {
     ACL($ida);
