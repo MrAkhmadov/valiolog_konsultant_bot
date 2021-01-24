@@ -80,7 +80,7 @@
     $menue = file_get_contents("step/$cbid.menu");
     //mkdir("step");
 
-    $cencel  = "🔙Bekor qilish";
+    $cencel  = "😔 Bekor qilish";
 
     $keys = json_encode([
         'resize_keyboard' => true,
@@ -117,7 +117,7 @@
         'keyboard' => [
             [['text' => "1 - Qoida"], ['text' => "2 - Qoida"],],
             [['text' => "3 - Qoida"], ['text' => "4 - Qoida"],],
-            [['text' => "5 - Qoida"], ['text' => "orqaga qaytish"],],
+            [['text' => "5 - Qoida"], ['text' => "🔙 Ortga qaytish"],],
         ]
     ]);
 
@@ -246,7 +246,7 @@ if ($tx == "5 - Qoida") {
     ]);
 }
 
-if ($tx == "orqaga qaytish") {
+if ($tx == "🔙 Ortga qaytish") {
     bot ('sendMessage', [
         'chat_id' => $cid,
         'text' => "Sizga qanday yordam bera olishim mumkin",
