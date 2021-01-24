@@ -386,7 +386,6 @@ if ($step == "3" && $menu == "register") {
 
 if ($step == "4" && $menu == "register") {
     if ($tx == $cencel) {} else {
-        if (mb_stripos($tx, "9989") !== false) {
             bot('sendMessage', [
                 'chat_id' => $cid,
                 'text' => "*Malumotlar muvoffaqiyatli saqlandi*, Iltimos bot faoliyatini baholang?",
@@ -395,15 +394,7 @@ if ($step == "4" && $menu == "register") {
             ]);
             nextTx($cid, "Aloqa " . $tx);
             step($cid);
-        } else {
-            bot('sendMessage', [
-                'chat_id' => $cid,
-                'text' => "Telefon raqamingizni kiriting",
-                'parse_mode' => 'markdown',
-                'reply_markup' => $otmen,
-            ]);
         } 
-    }
 }
 
 
