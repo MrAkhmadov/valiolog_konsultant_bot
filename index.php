@@ -260,9 +260,9 @@ if ($tx == "🔙 Ortga qaytish") {
 if ($tx == "❓Savol Javob") {
     bot('sendMessage', [
         'chat_id' => $cid,
-        'text' => "Jinsingizni kiriting👇👇",
+        'text' => "Ismingizni kiriting\n(Masalan: John)",
         'parse_mode' => 'markdown',
-        'reply_markup' => $jinsi,
+        'reply_markup' => $otmen,
     ]);
     pstep($cid, "0");
     put("step/$cid.menu", "savoljavob");
@@ -271,7 +271,7 @@ if ($tx == "❓Savol Javob") {
         if ($tx == $cencel) {} else {
             bot ('sendMessage', [
                 'chat_id' => $cid,
-                'text' => "Savolingizni batafsil kiriting:",
+                'text' => "Savolingizni batafsil kiriting: ",
                 'parse_mode' => 'markdown',
                 'reply_markup' => $otmen,
             ]);
@@ -280,29 +280,16 @@ if ($tx == "❓Savol Javob") {
         }
     }
 
-    if ($step == "1" && $menu == "savoljavob") {
-        if ($tx == $cencel) {} else {
-            bot ('sendMessage', [
-                'chat_id' => $cid,
-                'text' => "Telefon raqamingizni kiriting?\n(Masalan: +99897 1234567)",
-                'parse_mode' => 'markdown',
-                'reply_markup' => $otmen,
-            ]);
-            nextTx($cid, "Savol: ".$tx);
-            step($cid);
-        }
-    }
-
-if ($step == "2" && $menu == "savoljavob") {
+if ($step == "1" && $menu == "savoljavob") {
         if ($tx == $cencel) {} else {
                 bot('sendMessage', [
                 'chat_id' => $cid,
                 'text' => "*Savolingiz qabul qilindi tez orada sizning savolingizga mutaxasislar javob berishadi.*",
                 'parse_mode' => 'markdown',
-                'reply_markup' => $otmen,
+                'reply_markup' => $keys,
             ]);
             nextTx($cid, "📞Tel: ".$tx);
-            step($cid);         
+            step($cid);           
     }
 }
 
