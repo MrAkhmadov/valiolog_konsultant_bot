@@ -429,18 +429,18 @@ if ($step == "4" && $menu == "register") {
 //     ]);
 // }
 
-if ($tx == $cencel || $data == "clear") {
-    ACL($ida);
-    del($cbid);
-    del($cid);
-    if (isset($tx)) $url = "$cid";
-    if (isset($data)) $url = "$cbid";
-    bot('sendMessage', [
-        'chat_id' => $url,
-        'text' => "anketa Bekor qilindi",
-        'reply_markup' => $keys,
-    ]);
-}
+// if ($tx == $cencel || $data == "clear") {
+//     ACL($ida);
+//     del($cbid);
+//     del($cid);
+//     if (isset($tx)) $url = "$cid";
+//     if (isset($data)) $url = "$cbid";
+//     bot('sendMessage', [
+//         'chat_id' => $url,
+//         'text' => "anketa Bekor qilindi",
+//         'reply_markup' => $keys,
+//     ]);
+// }
 
 
 
