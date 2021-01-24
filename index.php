@@ -80,7 +80,7 @@
     $menue = file_get_contents("step/$cbid.menu");
     mkdir("step");
 
-    $cencel  = "Bekor qilish";
+    $cencel  = "🔙Bekor qilish";
 
     $keys = json_encode([
         'resize_keyboard' => true,
@@ -297,28 +297,13 @@ if ($step == "2" && $menu == "savoljavob") {
         if ($tx == $cencel) {} else {
                 bot('sendMessage', [
                 'chat_id' => $cid,
-                'text' => "*Savolingiz qabul qilindi tez orada siz bilan bog'lanamiz*\nIltimos bot faoliyatini baholang?",
+                'text' => "*Savolingiz qabul qilindi tez orada sizning savolingizga mutaxasislar javob berishadi.*",
                 'parse_mode' => 'markdown',
                 'reply_markup' => $otmen,
             ]);
             nextTx($cid, "📞Tel: ".$tx);
             step($cid);         
     }
-}
-
-if ($data == "ok" && $step == "3" && $menue == "savoljavob")
-
-if ($tx == $cencel || $data == "clear") {
-    ACL ($ida);
-    del($cbid);
-    del($cid);
-    if (isset($tx)) $url = "$cid";
-    if (isset($data)) $url = "$cbid";
-    bot('sendMessage', [
-        'chat_id' => $url,
-        'text' => "Anketa bekor qilindi!",
-        'reply_markup' => $keys,
-    ]);
 }
 
 if($tx == $cencel or $data == "clear"){
