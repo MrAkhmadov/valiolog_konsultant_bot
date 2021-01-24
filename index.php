@@ -1,90 +1,86 @@
 <?php 
-   define('API_KEY', '1552197392:AAGKN5quXP--VsACTr9q7jGS21lcBs_nl0o');
+    define('API_KEY', '1552197392:AAGKN5quXP--VsACTr9q7jGS21lcBs_nl0o');
 
-   $admin = "941327405"; // admin idsi
-   $adminuser = "mrAkhmadov"; // admin user
+    function del($nomi) {
+        array_map('unclink', glob("step/$nomi.*"));
+    }
+    function put($fayl, $nima) {
+        file_put_contents("$fayl", "$nima");
+    }
+    
+    function pstep($cid, $zn) {
+        file_put_contents("step/$cid.step", $zn);
+    }
 
-   function del($nomi){
-       array_map('unlink', glob("step/$nomi.*"));
-   }
-   function put($fayl, $nima){
-       file_put_contents("$fayl", "$nima");
-   }
+    function step($cid) {
+        $step = file_get_contents("step/$cid.step");
+        $step += 1;
+        file_put_contents("step/$cid.step", $step);
+    }
 
-   function pstep($cid,$zn){
-       file_put_contents("step/$cid.step",$zn);
-   }
+    function nextTx($cid, $txt) {
+        $step = file_get_contents("step/$cid.txt");
+        file_put_contents("step/$cid.txt", "$step\n$txt");
+    }
 
-   function step($cid){
-       $step = file_get_contents("step/$cid.step");
-       $step += 1;
-       file_put_contents("step/$cid.step",$step);
-   }
+    function ty($ch) {
+        return bot('sendChatAction', [
+            'chat_id' => $ch,
+            'action' => 'typing',
+        ]);
+    }
 
-   function nextTx($cid,$txt){
-       $step = file_get_contents("step/$cid.txt");
-       file_put_contents("step/$cid.txt","$step\n$txt");
-   }
+    function ACL($callbackQueryId, $text = null, $showAlert = false) {
+        return bot ('answerCallbackQuery', [
+            'calback_query_id' => $callbackQueryId,
+            'text' => $text,
+            'show_alert' => $showAlert,
+        ]);
+    }
 
-   function ty($ch){
-       return bot('sendChatAction', [
-           'chat_id' => $ch,
-           'action' => 'typing',
-       ]);
-   }
+    function bot($method, $datas=[])
+    {
+        $url = "https://api.telegram.org/bot".API_KEY."/".$method;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $datas);
+        $res = curl_exec($ch);
+        if (curl_error($ch)) {
+            var_dump(curl_error($ch));
+        } else {
+            return json_decode($res);
+        }
+    }
 
-   function ACL($callbackQueryId, $text = null, $showAlert = false)
-   {
-       return bot('answerCallbackQuery', [
-           'callback_query_id' => $callbackQueryId,
-           'text' => $text,
-           'show_alert' => $showAlert,
-       ]);
-   }
+    $update = json_decode(file_get_contents('php://input'));
+    $message = $update->message;
+    $cid = $message->chat->id;
+    $cidtyp = $message->chat->type;
+    $miid = $message->message_id;
+    $name = $message->chat->first_name;
+    $user = $message->from->username;
+    $tx = $message->text;
+    $callback = $update->callback_query;
+    $mmid = $callback->inline_message_id;
+    $mes = $callback->message;
+    $mid = $mes->message_id;
+    $cmtx = $mes->text;
+    $idd = $callback->message->chat->id;
+    $cbid = $callback->from->id;
+    $cbuser = $callback->from->username;
+    $data = $callback->data;
+    $ida = $callback->id;
+    $cqib = $update->callback_query->id;
+    $cbins = $callback->chat_instance;
+    $cbchtyp = $callback->message->chat->type;
+    $step = file_get_contents("step/$cid.step");
+    $menu = file_get_contents("step/$cid.menu");
+    $stepe = file_get_contents("step/$cbid.step");
+    $menue = file_get_contents("step/$cbid.menu");
+    //mkdir("step");
 
-   function bot($method,$datas=[]){
-       $url = "https://api.telegram.org/bot".API_KEY."/".$method;
-       $ch = curl_init();
-       curl_setopt($ch,CURLOPT_URL,$url);
-       curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-       curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);
-       $res = curl_exec($ch);
-       if(curl_error($ch)){
-           var_dump(curl_error($ch));
-       }else{
-           return json_decode($res);
-       }
-   }
-
-   $update = json_decode(file_get_contents('php://input'));
-   $message = $update->message;
-   $cid = $message->chat->id;
-   $cidtyp = $message->chat->type;
-   $miid = $message->message_id;
-   $name = $message->chat->first_name;
-   $user = $message->from->username;
-   $tx = $message->text;
-   $callback = $update->callback_query;
-   $mmid = $callback->inline_message_id;
-   $mes = $callback->message;
-   $mid = $mes->message_id;
-   $cmtx = $mes->text;
-   $mmid = $callback->inline_message_id;
-   $idd = $callback->message->chat->id;
-   $cbid = $callback->from->id;
-   $cbuser = $callback->from->username;
-   $data = $callback->data;
-   $ida = $callback->id;
-   $cqid = $update->callback_query->id;
-   $cbins = $callback->chat_instance;
-   $cbchtyp = $callback->message->chat->type;
-   $step = file_get_contents("step/$cid.step");
-   $menu = file_get_contents("step/$cid.menu");
-   $stepe = file_get_contents("step/$cbid.step");
-   $menue = file_get_contents("step/$cbid.menu");
-   // mkdir("step");
-
-   $otex = "😔 Bekor qilish";
+    $cencel  = "🔙Bekor qilish";
 
     $keys = json_encode([
         'resize_keyboard' => true,
@@ -95,10 +91,10 @@
         ]
     ]);
 
-    $otmen = json_encode([
-        'resize_keyboard'=>true,
-        'keyboard'=>[
-            [['text'=>"$otex"],],
+    $otmen  = json_encode([
+        'resize_keyboard' => true,
+        'keyboard' => [
+            [['text' => "$cencel"],],
         ]
     ]);
 
@@ -112,8 +108,8 @@
 
     $manzil = json_encode(
         ['inline_keyboard' => [
-        [['callback_data' => "😊 Awesome", 'text' => "😊 Awesome"],['callback_data' => "😕 So-so", 'text' => "😕 So-so"],],
-        ]
+        [['callback_data' => "Awesome", 'text' => "Awesome"], ['callback_data' => "So-So", 'text' => "So-so"],],
+        ]    
     ]);
 
     $kurs = json_encode([
@@ -127,16 +123,16 @@
 
     $tasdiq = json_encode(
         ['inline_keyboard' => [
-            [['callback_data' => "ok", 'text' => "Ha 👍"],['callback_data' => "clear", 'text' => "Yo'q 👎"],],
-        ]
-    ]);
+        [['callback_data' => "ok", 'text' => "ha"], ['callback_data' => "clear", 'text' => "yo`q"],],
+            ]
+        ]);
 
-    if(isset($tx)){
+    if (isset($tx)) {
         ty($cid);
     }
 
-    if($tx == "/start"){
-        bot('sendMessage', [
+    if ($tx == "/start") {
+        bot ('sendMessage', [
             'chat_id' => $cid,
             'text' => "*Assalomu alaykum, $name!* Sizga qanday yordam bera olishim mumkin?",
             'parse_mode' => 'markdown',
@@ -261,109 +257,53 @@ if ($tx == "orqaga qaytish") {
 
 //Savol javob 
 
-if($tx == "❓Savol Javob"){
+if ($tx == "❓Savol Javob") {
     bot('sendMessage', [
         'chat_id' => $cid,
-        'text' => "Ismingiz?\n(Masalan : John)",
+        'text' => "Jinsingizni kiriting👇👇",
         'parse_mode' => 'markdown',
-        'reply_markup' => $otmen,
+        'reply_markup' => $jinsi,
     ]);
-    pstep($cid,"0");
-    put("step/$cid.menu","register");
+    pstep($cid, "0");
+    put("step/$cid.menu", "savoljavob");
 }
-
-if($step == "0" and $menu == "savoljavob"){
-    if($tx == $otex){}else{
-        bot('sendMessage', [
-            'chat_id' => $cid,
-            'text' => "Yoshingiz\n(Masalan : 20)",
-            'parse_mode' => 'markdown',
-            'reply_markup' => $otmen,
-        ]);
-    nextTx($cid, "Mijoz Ismi: ". $tx);
-    step($cid);
+    if ($step == "0" && $menu == "savoljavob") {
+        if ($tx == $cencel) {} else {
+            bot ('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "Savolingizni batafsil kiriting:",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $otmen,
+            ]);
+            nextTx($cid, "Jinsi: ".$tx);
+            step($cid);
+        }
     }
-}
 
     if ($step == "1" && $menu == "savoljavob") {
-        if ($tx == $otex) {} else {
+        if ($tx == $cencel) {} else {
             bot ('sendMessage', [
                 'chat_id' => $cid,
                 'text' => "Telefon raqamingizni kiriting?\n(Masalan: +99897 1234567)",
                 'parse_mode' => 'markdown',
                 'reply_markup' => $otmen,
             ]);
-            nextTx($cid, "Yoshi: ".$tx);
+            nextTx($cid, "Savol: ".$tx);
             step($cid);
         }
     }
 
 if ($step == "2" && $menu == "savoljavob") {
-        if ($tx == $otex) {} else {
+        if ($tx == $cencel) {} else {
                 bot('sendMessage', [
                 'chat_id' => $cid,
-                'text' => "*Savolingizni to'liq shakilda kiriting.*",
+                'text' => "*Savolingiz qabul qilindi tez orada sizning savolingizga mutaxasislar javob berishadi.*",
                 'parse_mode' => 'markdown',
-                'reply_markup' => $cancel,
+                'reply_markup' => $otmen,
             ]);
             nextTx($cid, "📞Tel: ".$tx);
             step($cid);         
     }
-}
-
-if($step == "4" and $menu == "register"){
-    if($tx == $otex){}else{
-        if(mb_stripos($tx,"9989")!==false){
-        bot('sendMessage', [
-                'chat_id'=>$cid,
-                'text'=>"*Ma'lumotlar muvaffaqiyatli saqlandi*, Iltimos bot faoliyatini baholang?",
-                'parse_mode'=>'markdown',
-                'reply_markup' => $manzil,
-            ]);
-            nextTx($cid, "📞 Aloqa: ".$tx);
-            step($cid);
-        }else{
-            bot('sendMessage', [
-            'chat_id' => $cid,
-            'text' => "Telefon raqamingizni kiriting?\n(Masalan : 99897 1234567)",
-            'parse_mode' => 'markdown',
-            'reply_markup' => $cancel,
-        ]);
-        }
-    }
-}
-
-if(isset($data) and $stepe == "5" and $menue == "register"){
-    ACL($ida);
-    $baza = file_get_contents("step/$cbid.txt");
-    bot('sendMessage',[
-        'chat_id'=>$cbid,
-        'text'=>"<b>Sizning Anketa tayyor bo'ldi, barchasi ma'lumotlaringiz tasdiqlaysizmi?</b>
-        $baza\n☑️ Rating : $data",
-        'parse_mode'=>'html',
-        'reply_markup'=>$tasdiq,
-    ]);
-    nextTx($cbid, "👌 Rating: ".$data);
-    step($cbid);
-}
-
-if($data == "ok" and $stepe == "6" and $menue == "register"){
-    ACL($ida);
-    $baza = file_get_contents("step/$cbid.txt");
-    bot('sendMessage',[
-        'chat_id'=>$admin,
-        'text'=>"<b>Yangi o'quvchi!</b>
-        Username: @$cbuser
-        <a href='tg://user?id=$cbid'>Zaxira profili</a><code>$baza</code>",
-        'parse_mode'=>'html',
-    ]);
-    bot('sendMessage',[
-        'chat_id'=>$cbid,
-        'text'=>"✅ Sizning Anketangiz xodimlarimizga muvaffaqiyatli jo'natildi, qisqa fursatlarda sizga aloqaga chiqamiz! E'tiboringiz uchun rahmat",
-        'parse_mode'=>'html',
-        'reply_markup'=>$keys,
-    ]);
-    del($cbid);
 }
 
 if($tx == $cencel or $data == "clear"){
