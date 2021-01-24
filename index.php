@@ -299,9 +299,9 @@ if ($tx == "❓Savol Javob") {
             if (mb_stripos($tx, "9989") !== false) {
                 bot('sendMessage', [
                 'chat_id' => $cid,
-                'text' => "Savolingiz qabul qilindi tez orada siz bilan bog'lanamiz\nIltimos bot faoliyatini baholang?",
+                'text' => "*Savolingiz qabul qilindi tez orada siz bilan bog'lanamiz*\nIltimos bot faoliyatini baholang?",
                 'parse_mode' => 'markdown',
-                'reply_markup' => $manzil,
+                'reply_markup' => $otmen,
             ]);
             nextTx($cid, "📞Tel: ".$tx);
             step($cid);
@@ -315,6 +315,19 @@ if ($tx == "❓Savol Javob") {
         }
                 
     }
+}
+
+if ($tx == $cencel || $data == "clear") {
+    ACL ($ida);
+    del($cbid);
+    del($cid);
+    if (isset($tx)) $url = "$cid";
+    if (isset($data)) $url = "$cbid";
+    bot('sendMessage', [
+        'chat_id' => $url,
+        'text' => "Anketa bekor qilindi!",
+        'reply_markup' => $keys,
+    ]);
 }
 
 
