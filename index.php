@@ -340,9 +340,23 @@ if ($step == "0" && $menu == "register") {
             'parse_mode' => 'markdown',
             'reply_markup' => $otmen,
         ]);
+        nextTx($cid, "Shogird: ". $tx);
+        step($cid);
     }
 }
 
+if ($step == "1" && $menu == "register") {
+    if ($tx == $cencel) {} else {
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "Qaysi yo'nalish bo'yicha tahsil olmoqchisiz?",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $otmen,
+        ]);
+        nextTx($cid, "Yosh " . $tx);
+        step($cid);
+    }
+}
 
   
 
