@@ -414,11 +414,10 @@ if (isset($data) && $stepe == "5" && $menue == "register") {
 if ($data == "ok" && $stepe == "6" && $menue == "register") {
     ACL($ida);
     $baza = file_get_contents("step/$cbid.txt");
-    $admin = "941327405";
     bot ('sendMessage', [
-        'chat_id' => $admin,
+        'chat_id' => "941327405",
         'text' => "Yangi O'quvchi",
-        'parse_mode' => 'HTML',
+        'parse_mode' => 'markdown',
         'reply_markup' => $tasdiq,
     ]);
     bot('sendMessage', [
@@ -427,6 +426,7 @@ if ($data == "ok" && $stepe == "6" && $menue == "register") {
         'parse_mode' => 'markdown',
         'reply_markup' => $keys,
     ]);
+    del($cbid);
 }
 
 // if ($tx == $cencel || $data == "clear") {
