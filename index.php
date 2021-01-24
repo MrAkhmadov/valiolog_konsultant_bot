@@ -384,18 +384,18 @@ if ($step == "3" && $menu == "register") {
     }
 }
 
-// if ($step == "4" && $menu == "register") {
-//     if ($tx == $cencel) {} else {
-//             bot('sendMessage', [
-//                 'chat_id' => $cid,
-//                 'text' => "*Malumotlar muvoffaqiyatli saqlandi*, Iltimos bot faoliyatini baholang?",
-//                 'parse_mode' => 'markdown',
-//                 'reply_markup' => $manzil,
-//             ]);
-//             nextTx($cid, "Aloqa " . $tx);
-//             step($cid);
-//         } 
-// }
+if ($step == "4" && $menu == "register") {
+    if ($tx == $cencel) {} else {
+            bot('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "*Malumotlar muvoffaqiyatli saqlandi*, Iltimos bot faoliyatini baholang?",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $manzil,
+            ]);
+            nextTx($cid, "Aloqa " . $tx);
+            step($cid);
+        } 
+}
 
 // if (isset($data) && $stepe == "5" && $menue == "register") {
 //     ACL($ida);
@@ -429,18 +429,18 @@ if ($step == "3" && $menu == "register") {
 //     ]);
 // }
 
-// if ($tx == $cencel || $data == "clear") {
-//     ACL($ida);
-//     del($cbid);
-//     del($cid);
-//     if (isset($tx)) $url = "$cid";
-//     if (isset($data)) $url = "$cbid";
-//     bot('sendMessage', [
-//         'chat_id' => $url,
-//         'text' => "anketa Bekor qilindi",
-//         'reply_markup' => $keys,
-//     ]);
-// }
+if ($tx == $cencel || $data == "clear") {
+    ACL($ida);
+    del($cbid);
+    del($cid);
+    if (isset($tx)) $url = "$cid";
+    if (isset($data)) $url = "$cbid";
+    bot('sendMessage', [
+        'chat_id' => $url,
+        'text' => "anketa Bekor qilindi",
+        'reply_markup' => $keys,
+    ]);
+}
 
 
 
