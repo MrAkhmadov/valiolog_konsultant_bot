@@ -267,18 +267,18 @@ if ($tx == "❓Savol Javob") {
     pstep($cid, "0");
     put("step/$cid.menu", "savoljavob");
 }
-//     if ($step == "0" && $menu == "savoljavob") {
-//         if ($tx == $cencel) {} else {
-//             bot ('sendMessage', [
-//                 'chat_id' => $cid,
-//                 'text' => "Savolingizni batafsil kiriting: ",
-//                 'parse_mode' => 'markdown',
-//                 'reply_markup' => $otmen,
-//             ]);
-//             nextTx($cid, "Ismi: ".$tx);
-//             step($cid);
-//         }
-//     }
+    if ($step == "0" && $menu == "savoljavob") {
+        if ($tx == $cencel) {} else {
+            bot ('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "Savolingizni batafsil kiriting: ",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $otmen,
+            ]);
+            nextTx($cid, "Ismi: ".$tx);
+            step($cid);
+        }
+    }
 
 // if ($step == "1" && $menu == "savoljavob") {
 //         if ($tx == $cencel) {} else {
