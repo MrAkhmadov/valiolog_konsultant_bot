@@ -257,66 +257,90 @@ if ($tx == "orqaga qaytish") {
 
 // Savol javob 
 
+// if ($tx == "❓Savol Javob") {
+//     bot('sendMessage', [
+//         'chat_id' => $cid,
+//         'text' => "Jinsingizni kiriting👇👇",
+//         'parse_mode' => 'markdown',
+//         'reply_markup' => $jinsi,
+//     ]);
+//     pstep($cid, "0");
+//     put("step/$cid.menu", "savoljavob");
+// }
+//     if ($step == "0" && $menu == "savoljavob") {
+//         if ($tx == $cencel) {} else {
+//             bot ('sendMessage', [
+//                 'chat_id' => $cid,
+//                 'text' => "Savolingizni batafsil kiriting:",
+//                 'parse_mode' => 'markdown',
+//                 'reply_markup' => $otmen,
+//             ]);
+//             nextTx($cid, "Jinsi: ".$tx);
+//             step($cid);
+//         }
+//     }
+
+//     if ($step == "1" && $menu == "savoljavob") {
+//         if ($tx == $cencel) {} else {
+//             bot ('sendMessage', [
+//                 'chat_id' => $cid,
+//                 'text' => "Telefon raqamingizni kiriting?\n(Masalan: +99897 1234567)",
+//                 'parse_mode' => 'markdown',
+//                 'reply_markup' => $otmen,
+//             ]);
+//             nextTx($cid, "Savol: ".$tx);
+//             step($cid);
+//         }
+//     }
+
+// if ($step == "2" && $menu == "savoljavob") {
+//         if ($tx == $cencel) {} else {
+//                 bot('sendMessage', [
+//                 'chat_id' => $cid,
+//                 'text' => "*Savolingiz qabul qilindi tez orada siz bilan bog'lanamiz*\nIltimos bot faoliyatini baholang?",
+//                 'parse_mode' => 'markdown',
+//                 'reply_markup' => $otmen,
+//             ]);
+//             nextTx($cid, "📞Tel: ".$tx);
+//             step($cid);         
+//     }
+// }
+
+// if ($data == "ok" && $step == "3" && $menue == "savoljavob")
+
+// if ($tx == $cencel || $data == "clear") {
+//     ACL ($ida);
+//     del($cbid);
+//     del($cid);
+//     if (isset($tx)) $url = "$cid";
+//     if (isset($data)) $url = "$cbid";
+//     bot('sendMessage', [
+//         'chat_id' => $url,
+//         'text' => "Anketa bekor qilindi!",
+//         'reply_markup' => $keys,
+//     ]);
+// }
+
 if ($tx == "❓Savol Javob") {
-    bot('sendMessage', [
+    bot ('sendMessage', [
         'chat_id' => $cid,
-        'text' => "Jinsingizni kiriting👇👇",
+        'text' => "Ismingiz?",
         'parse_mode' => 'markdown',
-        'reply_markup' => $jinsi,
+        'reply_markup' => $otmen,
     ]);
     pstep($cid, "0");
-    put("step/$cid.menu", "savoljavob");
-}
-    if ($step == "0" && $menu == "savoljavob") {
-        if ($tx == $cencel) {} else {
-            bot ('sendMessage', [
-                'chat_id' => $cid,
-                'text' => "Savolingizni batafsil kiriting:",
-                'parse_mode' => 'markdown',
-                'reply_markup' => $otmen,
-            ]);
-            nextTx($cid, "Jinsi: ".$tx);
-            step($cid);
-        }
-    }
-
-    if ($step == "1" && $menu == "savoljavob") {
-        if ($tx == $cencel) {} else {
-            bot ('sendMessage', [
-                'chat_id' => $cid,
-                'text' => "Telefon raqamingizni kiriting?\n(Masalan: +99897 1234567)",
-                'parse_mode' => 'markdown',
-                'reply_markup' => $otmen,
-            ]);
-            nextTx($cid, "Savol: ".$tx);
-            step($cid);
-        }
-    }
-
-if ($step == "2" && $menu == "savoljavob") {
-        if ($tx == $cencel) {} else {
-                bot('sendMessage', [
-                'chat_id' => $cid,
-                'text' => "*Savolingiz qabul qilindi tez orada siz bilan bog'lanamiz*\nIltimos bot faoliyatini baholang?",
-                'parse_mode' => 'markdown',
-                'reply_markup' => $otmen,
-            ]);
-            nextTx($cid, "📞Tel: ".$tx);
-            step($cid);         
-    }
+    put("step/$cid.menu", "register");
 }
 
-if ($tx == $cencel || $data == "clear") {
-    ACL ($ida);
-    del($cbid);
-    del($cid);
-    if (isset($tx)) $url = "$cid";
-    if (isset($data)) $url = "$cbid";
-    bot('sendMessage', [
-        'chat_id' => $url,
-        'text' => "Anketa bekor qilindi!",
-        'reply_markup' => $keys,
-    ]);
+if ($step == "0" && $menu == "register") {
+    if ($tx == $cencel) {} else {
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "Yoshingiz?",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $otmen,
+        ]);
+    }
 }
 
 
