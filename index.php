@@ -269,9 +269,9 @@ if ($tx == "❓Savol Javob") {
 }
     if ($step == "0" && $menu == "savoljavob") {
         if ($tx == $cencel) {} else {
-            bot ('sendMessage', [
+            bot('sendMessage', [
                 'chat_id' => $cid,
-                'text' => "Savolingizni batafsil kiriting: ",
+                'text' => "Savolingizni Kiriting",
                 'parse_mode' => 'markdown',
                 'reply_markup' => $otmen,
             ]);
