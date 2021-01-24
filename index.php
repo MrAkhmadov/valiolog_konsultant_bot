@@ -78,7 +78,7 @@
     $menu = file_get_contents("step/$cid.menu");
     $stepe = file_get_contents("step/$cbid.step");
     $menue = file_get_contents("step/$cbid.menu");
-    //mkdir("step");
+    mkdir("step");
 
     $cencel  = "🔙Bekor qilish";
 
