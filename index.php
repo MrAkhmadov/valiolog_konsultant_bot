@@ -321,6 +321,19 @@ if ($tx == $cencel || $data == "clear") {
     ]);
 }
 
+if($tx == $cencel or $data == "clear"){
+    ACL($ida);
+    del($cbid);
+    del($cid);
+    if(isset($tx)) $url = "$cid";
+    if(isset($data)) $url = "$cbid";
+    bot('sendMessage', [
+    'chat_id'=>$url,
+    'text'=>"Anketa bekor qilindi!",
+    'reply_markup'=>$keys,
+    ]);
+    }
+
   
 
 ?>
