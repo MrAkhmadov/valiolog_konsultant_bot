@@ -384,20 +384,8 @@ if ($step == "3" && $menu == "register") {
     }
 }
 
-if ($step == "4" && $menu == "register") {
-    if ($tx == $cencel) {} else {
-            bot('sendMessage', [
-                'chat_id' => $cid,
-                'text' => "*Malumotlar muvoffaqiyatli saqlandi*, Iltimos bot faoliyatini baholang?",
-                'parse_mode' => 'markdown',
-                'reply_markup' => $manzil,
-            ]);
-            nextTx($cid, "Aloqa " . $tx);
-            step($cid);
-        } 
-}
 
-if (isset($data) && $stepe == "5" && $menue == "register") {
+if (isset($data) && $stepe == "4" && $menue == "register") {
     ACL($ida);
     $baza = file_get_contents("step/$cbid.txt");
     bot('sendMessage', [
@@ -411,7 +399,7 @@ if (isset($data) && $stepe == "5" && $menue == "register") {
     step($cbid);
 }
 
-if ($data == "ok" && $stepe == "6" && $menue == "register") {
+if ($data == "ok" && $stepe == "5" && $menue == "register") {
     ACL($ida);
     $baza = file_get_contents("step/$cbid.txt");
     bot ('sendMessage', [
