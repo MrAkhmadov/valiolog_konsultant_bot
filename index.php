@@ -267,31 +267,32 @@ if ($tx == "❓Savol Javob") {
     pstep($cid, "0");
     put("step/$cid.menu", "savoljavob");
 }
-    if ($step == "0" && $menu == "savoljavob") {
-        if ($tx == $cencel) {} else {
-            bot('sendMessage', [
-                'chat_id' => $cid,
-                'text' => "Savolingizni Kiriting",
-                'parse_mode' => 'markdown',
-                'reply_markup' => $otmen,
-            ]);
-            nextTx($cid, "Ismi: ".$tx);
-            step($cid);
-        }
+if ($step == "0" && $menu == "savoljavob") {
+    if ($tx == $cencel) {} else {
+        bot ('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "Savolingizni batafsil kiriting: ",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $otmen,
+        ]);
+        nextTx($cid, "Ismi: ".$tx);
+        step($cid);
     }
+}
 
-// if ($step == "1" && $menu == "savoljavob") {
-//         if ($tx == $cencel) {} else {
-//                 bot('sendMessage', [
-//                 'chat_id' => $cid,
-//                 'text' => "*Savolingiz qabul qilindi tez orada sizning savolingizga mutaxasislar javob berishadi.*",
-//                 'parse_mode' => 'markdown',
-//                 'reply_markup' => $keys,
-//             ]);
-//             nextTx($cid, "Savol: ".$tx);
-//             step($cid);           
-//     }
-// }
+if ($step == "1" && $menu == "savoljavob") {
+    if ($tx == $cencel) {} else {
+            bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "*Savolingiz qabul qilindi tez orada sizning savolingizga mutaxasislar javob berishadi.*",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $keys,
+        ]);
+        nextTx($cid, "Savol: ".$tx);
+        step($cid);           
+}
+}
+
 
 // if($step == "2" and $menu == "savoljavob"){
 //     ACL($ida);
