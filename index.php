@@ -257,7 +257,8 @@ if ($tx == "🔙 Ortga qaytish") {
 if ($tx == "❓Savol Javob") {
     bot ('sendMessage', [
         'chat_id' => $cid,
-        'text' => "Ismingiz?\n(Masalan: Akmal)",
+        'text' => "Hozir sizga bir necha savollar beriladi. Har biriga javob bering. Oxirida hammasi to'g'ri bo'lsa `ha` tugmasini bosing va savolingiz qabul qilinadi. \n
+        ✍️ Marxamat Ismingizni kiriting\n(Masalan: Akmal)",
         'parse_mode' => 'markdown',
         'reply_markup' => $otmen,
     ]);
@@ -273,7 +274,7 @@ if ($step == "0" && $menu == "register") {
             'parse_mode' => 'markdown',
             'reply_markup' => $otmen,
         ]);
-        nextTx($cid, "Mijoz Ismi: ". $tx);
+        nextTx($cid, "📌Ism: ". $tx);
         step($cid);
     }
 }
@@ -286,7 +287,7 @@ if ($step == "1" && $menu == "register") {
             'parse_mode' => 'markdown',
             'reply_markup' => $otmen,
         ]);
-        nextTx($cid, "Mijoz yoshi: ". $tx);
+        nextTx($cid, "📅Yosh: ". $tx);
         step($cid);
     }
  }
@@ -313,23 +314,11 @@ if ($step == "3" && $menu == "register") {
                 'parse_mode' => 'markdown',
                 'reply_markup' => $manzil,
             ]);
-            nextTx($cid, "Savol: " . $tx);
+            nextTx($cid, "❓Savol: " . $tx);
             step($cid);
     }
 }
 
-// if (isset($data) && $stepe == "4" && $menue == "register") {
-//     ACL($ida);
-//     $baza = file_get_contents("step/$cbid.txt");
-//     bot ('sendMessage', [
-//         'chat_id' => $cbid,
-//         'text' => "Sizning anketa tayyor bo'ldi, barcha ma'lumotlaringizni tasdiqlng\n Rating: $data",
-//         'parse_mode' => 'html',
-//         'reply_markup' => $tasdiq,
-//     ]);
-//     nextTx($cbid, "Rating: $data");
-//     step($cbid);
-// }
 if(isset($data) and $stepe == "4" and $menue == "register"){
     ACL($ida);
     $baza = file_get_contents("step/$cbid.txt");
