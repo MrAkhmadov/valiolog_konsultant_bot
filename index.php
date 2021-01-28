@@ -318,16 +318,29 @@ if ($step == "3" && $menu == "register") {
     }
 }
 
-if (isset($data) && $stepe == "4" && $menue == "register") {
+// if (isset($data) && $stepe == "4" && $menue == "register") {
+//     ACL($ida);
+//     $baza = file_get_contents("step/$cbid.txt");
+//     bot ('sendMessage', [
+//         'chat_id' => $cbid,
+//         'text' => "Sizning anketa tayyor bo'ldi, barcha ma'lumotlaringizni tasdiqlng\n Rating: $data",
+//         'parse_mode' => 'html',
+//         'reply_markup' => $tasdiq,
+//     ]);
+//     nextTx($cbid, "Rating: $data");
+//     step($cbid);
+// }
+if(isset($data) and $stepe == "4" and $menue == "register"){
     ACL($ida);
     $baza = file_get_contents("step/$cbid.txt");
-    bot ('sendMessage', [
-        'chat_id' => $cbid,
-        'text' => "Sizning anketa tayyor bo'ldi, barcha ma'lumotlaringizni tasdiqlng\n Rating: $data",
-        'parse_mode' => 'html',
-        'reply_markup' => $tasdiq,
+    bot('sendMessage',[
+        'chat_id'=>$cbid,
+        'text'=>"<b>Sizning Anketa tayyor bo'ldi, barchasi ma'lumotlaringiz tasdiqlaysizmi?</b>
+        $baza\n☑️ Rating : $data",
+        'parse_mode'=>'html',
+        'reply_markup'=>$tasdiq,
     ]);
-    nextTx($cbid, "Rating: $data");
+    nextTx($cbid, "👌 Rating: ".$data);
     step($cbid);
 }
 
