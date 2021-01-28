@@ -103,7 +103,7 @@ mkdir("step");
 
     $manzil = json_encode(
         ['inline_keyboard' => [
-        [['callback_data' => "Awesome", 'text' => "Awesome"], ['callback_data' => "So-So", 'text' => "So-so"],],
+        [['callback_data' => "😊Ajoyib", 'text' => "😊Ajoyib"], ['callback_data' => "😕O'rtamiyona", 'text' => "😕O'rtamiyona"],],
         ]    
     ]);
 
@@ -252,12 +252,10 @@ if ($tx == "🔙 Ortga qaytish") {
 
 //Savol javob 
 
-// Register
-
 if ($tx == "❓Savol Javob") {
     bot ('sendMessage', [
         'chat_id' => $cid,
-        'text' => "Hozir sizga bir necha savollar beriladi. Har biriga javob bering. Oxirida hammasi to'g'ri bo'lsa `ha` tugmasini bosing va savolingiz qabul qilinadi. \n
+        'text' => "Anketa to'ldirish uchun savollarga javob bering. \n
         ✍️ Marxamat Ismingizni kiriting\n(Masalan: Akmal)",
         'parse_mode' => 'markdown',
         'reply_markup' => $otmen,
@@ -325,11 +323,11 @@ if(isset($data) and $stepe == "4" and $menue == "register"){
     bot('sendMessage',[
         'chat_id'=>$cbid,
         'text'=>"<b>Sizning Anketa tayyor bo'ldi, barchasi ma'lumotlaringiz tasdiqlaysizmi?</b>
-        $baza\n☑️ Rating : $data",
+        $baza\n☑️ Reyting : $data",
         'parse_mode'=>'html',
         'reply_markup'=>$tasdiq,
     ]);
-    nextTx($cbid, "👌 Rating: ".$data);
+    nextTx($cbid, "👌 Reyting: ".$data);
     step($cbid);
 }
 
