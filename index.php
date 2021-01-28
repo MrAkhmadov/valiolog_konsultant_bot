@@ -341,6 +341,13 @@ if ($data == "ok" && $stepe == "5" && $menue == "register") {
         'parse_mode' => 'html',
         'reply_markup' => $tasdiq,
     ]);
+    bot('sendMessage', [
+        'chat_id' => $cbid,
+        'text' => "Sizning savolingiz qabul qilindi iltimos mutaxasis javobini kuting.",
+        'parse_mode' => 'markdown',
+        'reply_markup' => $keys,
+    ]);
+    del($cbid);
 }
 
 if($tx == $otex or $data == "clear"){
