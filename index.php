@@ -82,8 +82,6 @@
    mkdir("step");
 
 
-    $cencel  = "😔 Bekor qilish";
-
     $keys = json_encode([
         'resize_keyboard' => true,
         'keyboard' => [
@@ -93,10 +91,11 @@
         ]
     ]);
 
+    $otex = "😔 Bekor qilish";
     $otmen  = json_encode([
         'resize_keyboard' => true,
         'keyboard' => [
-            [['text' => "$cencel"],],
+            [['text' => "$otex"],],
         ]
     ]);
 
@@ -273,7 +272,7 @@ if ($tx == "❓Savol Javob") {
 }
 
 if ($step == "0" && $menu == "register") {
-    if ($tx == $cencel) {} else {
+    if ($tx == $otex) {} else {
         bot('sendMessage', [
             'chat_id' => $cid,
             'text' => "Yoshingiz?\n(Masalan: 20)",
@@ -286,7 +285,7 @@ if ($step == "0" && $menu == "register") {
 }
 
 if ($step == "1" && $menu == "register") {
-    if ($tx == $cencel) {} else {
+    if ($tx == $otex) {} else {
         bot('sendMessage', [
             'chat_id' => $cid,
             'text' => "Telefon raqamingizni kiriting.\n(+998 97 123 45 67)",
@@ -299,7 +298,7 @@ if ($step == "1" && $menu == "register") {
  }
 
 if ($step == "2" && $menu == "register") {
-   if ($tx == $cencel) {} else {
+   if ($tx == $otex) {} else {
        bot('sendMessage', [
            'chat_id' => $cid,
            'text' => "Savolingizni to'liq kiriting. ",
@@ -310,6 +309,19 @@ if ($step == "2" && $menu == "register") {
        step($cid);
    }
 }
+
+if($tx == $otex or $data == "clear"){
+    ACL($ida);
+    del($cbid);
+    del($cid);
+    if(isset($tx)) $url = "$cid";
+    if(isset($data)) $url = "$cbid";
+    bot('sendMessage', [
+    'chat_id'=>$url,
+    'text'=>"Anketa bekor qilindi!",
+    'reply_markup'=>$keys,
+    ]);
+    }
 
 
  
