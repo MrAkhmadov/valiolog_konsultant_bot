@@ -239,115 +239,115 @@ if ($tx == "orqaga qaytish") {
      }
  }
 
- if ($step == "1" && $menu == "register") {
-    if ($tx == $cencel) {} else {
-        bot('sendMessage', [
-            'chat_id' => $cid,
-            'text' => "Qaysi yo'nalishda o'qimoqchisiz ?\n(Masalan: Python, PHP, SQL)",
-            'parse_mode' => 'markdown',
-            'reply_markup' => $otmen,
-        ]);
-        nextTx($cid, "Yosh: ". $tx);
-        step($cid);
-    }
-}
+//  if ($step == "1" && $menu == "register") {
+//     if ($tx == $cencel) {} else {
+//         bot('sendMessage', [
+//             'chat_id' => $cid,
+//             'text' => "Qaysi yo'nalishda o'qimoqchisiz ?\n(Masalan: Python, PHP, SQL)",
+//             'parse_mode' => 'markdown',
+//             'reply_markup' => $otmen,
+//         ]);
+//         nextTx($cid, "Yosh: ". $tx);
+//         step($cid);
+//     }
+// }
 
-if ($step == "2" && $menu == "register") {
-    if ($tx == $cencel) {} else {
-        bot('sendMessage', [
-            'chat_id' => $cid,
-            'text' => "Tanlangan yo'nalish bo'yicha bilim darajangiz qanday?\n(Masalan: Oz moz, Umuman yo'q...)",
-            'parse_mode' => 'markdown',
-            'reply_markup' => $otmen,
-        ]);
-        nextTx($cid, "Texnologiya: ". $tx);
-        step($cid);
-    }
-}
+// if ($step == "2" && $menu == "register") {
+//     if ($tx == $cencel) {} else {
+//         bot('sendMessage', [
+//             'chat_id' => $cid,
+//             'text' => "Tanlangan yo'nalish bo'yicha bilim darajangiz qanday?\n(Masalan: Oz moz, Umuman yo'q...)",
+//             'parse_mode' => 'markdown',
+//             'reply_markup' => $otmen,
+//         ]);
+//         nextTx($cid, "Texnologiya: ". $tx);
+//         step($cid);
+//     }
+// }
 
-if ($step == "3" && $menu == "register") {
-    if ($tx == $cencel) {} else {
-        bot('sendMessage', [
-            'chat_id' => $cid,
-            'text' => "Telefon raqamingizni kiriting.\n(+998 97 123 45 67)",
-            'parse_mode' => 'markdown',
-            'reply_markup' => $otmen,
-        ]);
-        nextTx($cid, "Yo'nalish: ". $tx);
-        step($cid);
-    }
-}
+// if ($step == "3" && $menu == "register") {
+//     if ($tx == $cencel) {} else {
+//         bot('sendMessage', [
+//             'chat_id' => $cid,
+//             'text' => "Telefon raqamingizni kiriting.\n(+998 97 123 45 67)",
+//             'parse_mode' => 'markdown',
+//             'reply_markup' => $otmen,
+//         ]);
+//         nextTx($cid, "Yo'nalish: ". $tx);
+//         step($cid);
+//     }
+// }
 
-if ($step == "4" && $menu == "register") {
-    if ($tx == $cencel) {} else {
-        if (mb_stripos($tx, "9989") !== false) {
-            bot('sendMessage', [
-                'chat_id' => $cid,
-                'text' => "Ma'lumotlar muvaffaqiyatli saqlandi. Iltimos bot faoliya haqida o'z fikringizni bildiring.",
-                'parse_mode' => 'markdown',
-                'reply_markup' => $manzil,
-            ]);
-        nextTx($cid, "Aloqa: ". $tx);
-        step($cid);
-        } else {
-            bot('sendMessage', [
-                'chat_id' => $cid,
-                'text' => "Telefon raqamingizni kiriting?",
-                'parse_mode' => 'markdown',
-                'reply_markup' => $otmen,
-            ]);
-        } 
-    }
+// if ($step == "4" && $menu == "register") {
+//     if ($tx == $cencel) {} else {
+//         if (mb_stripos($tx, "9989") !== false) {
+//             bot('sendMessage', [
+//                 'chat_id' => $cid,
+//                 'text' => "Ma'lumotlar muvaffaqiyatli saqlandi. Iltimos bot faoliya haqida o'z fikringizni bildiring.",
+//                 'parse_mode' => 'markdown',
+//                 'reply_markup' => $manzil,
+//             ]);
+//         nextTx($cid, "Aloqa: ". $tx);
+//         step($cid);
+//         } else {
+//             bot('sendMessage', [
+//                 'chat_id' => $cid,
+//                 'text' => "Telefon raqamingizni kiriting?",
+//                 'parse_mode' => 'markdown',
+//                 'reply_markup' => $otmen,
+//             ]);
+//         } 
+//     }
 
-    if (isset($data) && $stepe == "5" && $menue == "register") {
-        ACL($ida);
-        $baza == file_get_contents("step/$cbid.txt");
-        bot('sendMessage', [
-            'chat_id' => $cbid,
-            'text' => "<b>Sizning anketa tayyor bo'ldi, barcha ma'lumotlaringizni tasdiqlang?</b> $baza\n Rating: $data",
-            'parse_mode' => 'html',
-            'reply_markup' => $tasdiq,
-        ]);
-        nextTx($cbid, "Rating". $data);
-        step($cbid);
-    }
-}
+//     if (isset($data) && $stepe == "5" && $menue == "register") {
+//         ACL($ida);
+//         $baza == file_get_contents("step/$cbid.txt");
+//         bot('sendMessage', [
+//             'chat_id' => $cbid,
+//             'text' => "<b>Sizning anketa tayyor bo'ldi, barcha ma'lumotlaringizni tasdiqlang?</b> $baza\n Rating: $data",
+//             'parse_mode' => 'html',
+//             'reply_markup' => $tasdiq,
+//         ]);
+//         nextTx($cbid, "Rating". $data);
+//         step($cbid);
+//     }
+// }
 
-    if ($data == "ok" && $stepe == "6" && $menue == "register") {
-        ACL($ida);
-        $baza = file_get_contents("step/$cbid.txt");
-        $admin = "941327405";
-        bot ('sendMessage', [
-            'chat_id' => $admin,
-            'text' => "<b>Yangi o'quvchi</b> Username: @$cbuser <a href='tg://user?id = $cbid'> Zaxira profili </a><code>$baza</code>",
-            'parse_mode' => 'html',
-            'reply_markup' => $tasdiq,
+//     if ($data == "ok" && $stepe == "6" && $menue == "register") {
+//         ACL($ida);
+//         $baza = file_get_contents("step/$cbid.txt");
+//         $admin = "941327405";
+//         bot ('sendMessage', [
+//             'chat_id' => $admin,
+//             'text' => "<b>Yangi o'quvchi</b> Username: @$cbuser <a href='tg://user?id = $cbid'> Zaxira profili </a><code>$baza</code>",
+//             'parse_mode' => 'html',
+//             'reply_markup' => $tasdiq,
 
-        ]);
-        bot('sendMessage', [
-            'chat_id' => $cid,
-            'text' => "Sizning anketayz qabul qilinidi.",
-            'parse_mode' => 'markdown',
-            'reply_markup' => $keys,
-        ]);
-    }
+//         ]);
+//         bot('sendMessage', [
+//             'chat_id' => $cid,
+//             'text' => "Sizning anketayz qabul qilinidi.",
+//             'parse_mode' => 'markdown',
+//             'reply_markup' => $keys,
+//         ]);
+//     }
 
-    del($cbid);
+//     del($cbid);
 
     
 
-if ($tx == $cencel || $data == "clear") {
-    ACL($ida);
-    del($cbid);
-    del($cid);
-    if (isset($tx)) $url == "$cid";
-    if (isset($data)) $url = "$cbid";
-    bot ('sendMessage', [
-        'chat_id' => $url,
-        'text' => "Anketa bekor qilindi",
-        'reply_markup' => $keys,
-    ]);
-}
+// if ($tx == $cencel || $data == "clear") {
+//     ACL($ida);
+//     del($cbid);
+//     del($cid);
+//     if (isset($tx)) $url == "$cid";
+//     if (isset($data)) $url = "$cbid";
+//     bot ('sendMessage', [
+//         'chat_id' => $url,
+//         'text' => "Anketa bekor qilindi",
+//         'reply_markup' => $keys,
+//     ]);
+// }
 
 
 
