@@ -304,6 +304,19 @@ if ($step == "2" && $menu == "register") {
    }
 }
 
+if ($step == "4" && $menu == "register") {
+    if ($tx == $otex) {} else {
+        if (mb_stripos($tx, "9989") !== false) {
+            bot('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "*Malumotlar muvaffaqiyatli saqlandi*, Iltimos bot faoliyatini baholang?",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $manzil,
+            ]);
+        }
+    }
+}
+
 if($tx == $otex or $data == "clear"){
     ACL($ida);
     del($cbid);
