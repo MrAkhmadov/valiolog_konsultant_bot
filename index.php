@@ -280,49 +280,38 @@ if ($step == "0" && $menu == "register") {
             'parse_mode' => 'markdown',
             'reply_markup' => $otmen,
         ]);
-        nextTx($cid, "Shogird: ". $tx);
+        nextTx($cid, "Mijoz Ismi: ". $tx);
         step($cid);
     }
 }
 
 if ($step == "1" && $menu == "register") {
-   if ($tx == $cencel) {} else {
-       bot('sendMessage', [
-           'chat_id' => $cid,
-           'text' => "Qaysi yo'nalishda o'qimoqchisiz ?\n(Masalan: Python, PHP, SQL)",
-           'parse_mode' => 'markdown',
-           'reply_markup' => $otmen,
-       ]);
-       nextTx($cid, "Yosh: ". $tx);
-       step($cid);
-   }
-}
+    if ($tx == $cencel) {} else {
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "Telefon raqamingizni kiriting.\n(+998 97 123 45 67)",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $otmen,
+        ]);
+        nextTx($cid, "Mijoz yoshi: ". $tx);
+        step($cid);
+    }
+ }
 
 if ($step == "2" && $menu == "register") {
    if ($tx == $cencel) {} else {
        bot('sendMessage', [
            'chat_id' => $cid,
-           'text' => "Tanlangan yo'nalish bo'yicha bilim darajangiz qanday?\n(Masalan: Oz moz, Umuman yo'q...)",
+           'text' => "Savolingizni to'liq kiriting. ",
            'parse_mode' => 'markdown',
            'reply_markup' => $otmen,
        ]);
-       nextTx($cid, "Texnologiya: ". $tx);
+       nextTx($cid, "📞tel: ". $tx);
        step($cid);
    }
 }
 
-if ($step == "3" && $menu == "register") {
-   if ($tx == $cencel) {} else {
-       bot('sendMessage', [
-           'chat_id' => $cid,
-           'text' => "Telefon raqamingizni kiriting.\n(+998 97 123 45 67)",
-           'parse_mode' => 'markdown',
-           'reply_markup' => $otmen,
-       ]);
-       nextTx($cid, "Yo'nalish: ". $tx);
-       step($cid);
-   }
-}
+
  
 
 ?>
