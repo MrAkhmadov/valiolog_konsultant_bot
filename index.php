@@ -331,6 +331,18 @@ if (isset($data) && $stepe == "4" && $menue == "register") {
     step($cbid);
 }
 
+if ($data == "ok" && $stepe == "5" && $menue == "register") {
+    ACL($ida);
+    $baza = file_get_contents("step/$cbid.txt");
+    $admin = "941327405";
+    bot ('sendMessage', [
+        'chat_id' => $admin,
+        'text' => "<b>Yangi o'quvchi!</b> Username: @$cbuser <a href='tg://user?id=$cbid'> Zaxira profili </a><code>$baza</code>",
+        'parse_mode' => 'html',
+        'reply_markup' => $tasdiq,
+    ]);
+}
+
 if($tx == $otex or $data == "clear"){
     ACL($ida);
     del($cbid);
