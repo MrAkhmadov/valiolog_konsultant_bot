@@ -259,7 +259,7 @@ if ($tx == "🔙 Ortga qaytish") {
 
 // Register
 
-if ($tx == "Ro`yxatdan o`tish") {
+if ($tx == "❓Savol Javob") {
     bot ('sendMessage', [
         'chat_id' => $cid,
         'text' => "Ismingiz?\n(Masalan: Akmal)",
