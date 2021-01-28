@@ -263,7 +263,7 @@
                 'chat_id' => $cid,
                 'text' => "Tanlagan yo'nalishingiz bo'yicha bilim darajangiz qanday?\n(Masalan : Umuman yo'q, Oz-moz bilaman...)",
                 'parse_mode' => 'markdown',
-                'reply_markup' => $cancel,
+                'reply_markup' => $otmen,
             ]);
             nextTx($cid, "📚 Texnologiya: ".$tx);
             step($cid);
@@ -275,7 +275,7 @@
                 'chat_id' => $cid,
                 'text' => "Telefon raqamingizni kiriting?\n(Masalan : +99897 1234567)",
                 'parse_mode' => 'markdown',
-                'reply_markup' => $cancel,
+                'reply_markup' => $otmen,
             ]);
         nextTx($cid, "👨🏻‍💻 Daraja: ".$tx);
         step($cid);
@@ -297,7 +297,7 @@
                 'chat_id' => $cid,
                 'text' => "Telefon raqamingizni kiriting?\n(Masalan : 99897 1234567)",
                 'parse_mode' => 'markdown',
-                'reply_markup' => $cancel,
+                'reply_markup' => $otmen,
             ]);
             }
         }
