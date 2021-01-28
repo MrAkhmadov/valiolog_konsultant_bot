@@ -107,6 +107,13 @@ mkdir("step");
         ]    
     ]);
 
+    $javob = json_encode([
+        'resize_keyboard' => true,
+        'keyboard' => [
+            [['text' => "Javob yuborish"],],
+        ]
+    ]); 
+
     $kurs = json_encode([
         'resize_keyboard' => true,
         'keyboard' => [
@@ -337,9 +344,9 @@ if ($data == "ok" && $stepe == "5" && $menue == "register") {
     $admin = "941327405";
     bot ('sendMessage', [
         'chat_id' => $admin,
-        'text' => "<b>Yangi o'quvchi!</b> Username: @$cbuser <a href='tg://user?id=$cbid'> Zaxira profili </a><code>$baza</code>",
+        'text' => "<b>Yangi o'quvchi!</b> Username: @$cbuser \n<a href='tg://user?id=$cbid'> Zaxira profili </a><code>$baza</code>",
         'parse_mode' => 'html',
-        'reply_markup' => $tasdiq,
+        'reply_markup' => $javob,
     ]);
     bot('sendMessage', [
         'chat_id' => $cbid,
