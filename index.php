@@ -318,6 +318,19 @@ if ($step == "3" && $menu == "register") {
     }
 }
 
+if (isset($data) && $stepe == "4" && $menue == "register") {
+    ACL($ida);
+    $baza = file_get_contents("step/$cbid.txt");
+    bot ('sendMessage', [
+        'chat_id' => $cbid,
+        'text' => "Sizning anketa tayyor bo'ldi, barcha ma'lumotlaringizni tasdiqlng\n Rating: $data",
+        'parse_mode' => 'html',
+        'reply_markup' => $tasdiq,
+    ]);
+    nextTx($cbid, "Rating: $data");
+    step($cbid);
+}
+
 if($tx == $otex or $data == "clear"){
     ACL($ida);
     del($cbid);
