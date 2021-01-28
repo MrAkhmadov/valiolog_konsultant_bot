@@ -80,7 +80,7 @@ $step = file_get_contents("step/$cid.step");
 $menu = file_get_contents("step/$cid.menu");
 $stepe = file_get_contents("step/$cbid.step");
 $menue = file_get_contents("step/$cbid.menu");
-// mkdir("step");
+mkdir("step");
 
 
 
