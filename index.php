@@ -78,16 +78,16 @@
     $menu = file_get_contents("step/$cid.menu");
     $stepe = file_get_contents("step/$cbid.step");
     $menue = file_get_contents("step/$cbid.menu");
-    //mkdir("step");
+    mkdir("step");
 
-    $cencel  = "😔 Bekor qilish";
+    $cencel  = "Bekor qilish";
 
     $keys = json_encode([
         'resize_keyboard' => true,
         'keyboard' => [
-            [['text' => "💉Salomatlik kansepsiyasi"],],
-            [['text' => "❓Savol Javob"], ['text' => "📞Aloqa"],],
-            [['text' => "🎞Video"], ['text' => "🗣Audio"],],
+            [['text' => "Kurslar"],],
+            [['text' => "Biz haqimizda"], ['text' => "Aloqa"],],
+            [['text' => "Manzil"], ['text' => "Ro`yxatdan o`tish"],],
         ]
     ]);
 
@@ -98,34 +98,26 @@
         ]
     ]);
 
-    $jinsi = json_encode([
-        'resize_keyboard' => true,
-        'keyboard' => [
-            [['text' => "👱‍♂️Erkak"], ['text' => "👩‍🦳Ayol"],],
-            [['text' => "$cencel"],],
-        ]
-    ]);
-
     $manzil = json_encode(
         ['inline_keyboard' => [
-        [['callback_data' => "Awesome", 'text' => "Awesome"], ['callback_data' => "So-So", 'text' => "So-so"],],
+        [['callback_data' => "Awesome", 'text' => "Awesome"], ['callback_data' => "So-SO", 'text' => "So-so"],],
         ]    
     ]);
 
     $kurs = json_encode([
         'resize_keyboard' => true,
         'keyboard' => [
-            [['text' => "1 - Qoida"], ['text' => "2 - Qoida"],],
-            [['text' => "3 - Qoida"], ['text' => "4 - Qoida"],],
-            [['text' => "5 - Qoida"], ['text' => "🔙 Ortga qaytish"],],
+            [['text' => "Front End"], ['text' => "Back End"],],
+            [['text' => "Python"], ['text' => "Go lang"],],
+            [['text' => "orqaga qaytish"]],
         ]
     ]);
 
     $tasdiq = json_encode(
         ['inline_keyboard' => [
-            [['callback_data' => "ok", 'text' => "Ha 👍"],['callback_data' => "clear", 'text' => "Yo'q 👎"],],
-        ]
-    ]);
+        [['callback_data' => "ok", 'text' => "ha"], ['callback_data' => "clear", 'text' => "yo`q"],],
+            ]
+        ]);
 
     if (isset($tx)) {
         ty($cid);
@@ -140,113 +132,79 @@
         ]);
     }
 
-if ($tx == "🗣Audio") {
-    bot ('sendVoice', [
+if ($tx == "Biz haqimizda") {
+    bot ('sendMessage', [
         'chat_id' => $cid,
-        'voice' => "https://t.me/valiolog_konsultant/20",
-        'caption' => 'Suv va uning foydali hususiyatlari',
+        'text' => "Salom bu yerga biz haqimizdagi matnlar yoziladi",
+        'parse_mode' => 'markdown',
         'reply_markup' => $keys,
     ]);   
 }
 
-if ($tx == "📞Aloqa") {
+if ($tx == "Aloqa") {
     bot('sendMessage', [
         'chat_id' => $cid,
-        'text' => '<a href="https://t.me/yulduzoy_sultonova">👥Bizning Guruh</a>
-        <a href="https://t.me/valiolog_konsultant">📢Bizning kanal</a>',
-        'parse_mode' => 'HTML',
+        'text' => "+998 93 906 99 14",
+        'parse_mode' => 'markdown',
         'reply_markup' => $keys,
     ]);
 }
 
-if ($tx == "🎞Video") {
-    bot('sendVideo', [
+if ($tx == "Manzil") {
+    bot('sendLocation', [
         'chat_id' => $cid,
-        'video' => "https://t.me/valiolog_konsultant/16",
-        'caption' => "📹 Salomatlik Sirlari ko'rsatuvi 1-son.",
+        'latitude' => 41.326387,
+        'longitude' => 69.229802,
         'reply_markup' => $keys,
     ]);
 }
 
-if ($tx == "💉Salomatlik kansepsiyasi") {
+if ($tx == "Kurslar") {
     bot ('sendMessage', [
         'chat_id' => $cid,
-        'text' => "Бир муддат ўйлаб кўрдингизми❓
-        Соғлик нима❓
-        Нима учун касал бўляпмиз❓
-        Касаллик қаердан келиб чиқяпти❓
-        Ва УЗОҚ  ЯШАШ ва СОҒЛОМ ҚАРИШ СИРЛАРИ НИМА❓❓
-        
-        Оддий 5 та *ОЛТИН* коидага амал қилишни ўрганинг  ва  соглом булинг🙏
-        
-        5 та ОЛТИН КОИДА👇👇
-        
-        *💥1-ПСИХОЛОГИЯ, РУХИЙ ХОЛАТНИ ИДОРА КИЛИШ.
-        
-        💥2-РАЦИОНАЛ, 5 МАХАЛ ТЎҒРИ ОВҚАТЛАНИШ.
-        
-        💥3-ТИРИК СУВ ИЧИШ ТАРТИБИ.
-        
-        💥4-ОРГАНИЗМНИ ТОЗАЛАШ (йилига 2 - 3 марта)
-        
-        💥5-ХАРАКАТ (5 км ва ундан ортик юриш) 
-        Батафсил 👇👇*",
+        'text' => "*Aynan qaysi yo'nalishdagi kurslarimiz haqida ma'lumot kerak*",
         'parse_mode' => 'markdown',
         'reply_markup' => $kurs,
     ]);
 }
 
-if ($tx == "1 - Qoida") {
-    bot ('sendPhoto', [
+if ($tx == "Front End") {
+    bot ('sendMessage', [
         'chat_id' => $cid, 
-        'photo' => "https://t.me/valiolog_konsultant/9",
-        'caption' => "1-қоида.
-        Сув ичиш режимини ўрнатинг. Вазнингизни қишда 30 мл га,  ёзда 40 мл га  кўпайтиринг, чиққан сон сизнинг кун давомида оч қоринга  ичадиган нормангиз.(қишин ёзин, бир умр ). Масалан: 70 кг бўлсангиз, 70×30=2 литр 100 мл сув ҳозирги салқин пайтда сизнинг 1 кунлик нормангиз.",
+        'text' => "*Bu yerga Front End bo'yicha kurslar haqida ma'lumot olishingiz mumkin*",
+        'parse_mode' => 'markdown',
         'reply_markup' => $kurs,
     ]);
 }
 
-if ($tx == "2 - Qoida") {
-    bot ('sendPhoto', [
+if ($tx == "Back End") {
+    bot ('sendMessage', [
         'chat_id' => $cid, 
-        'photo' => "https://t.me/valiolog_konsultant/10",
-        'caption' => "2-қоида.
-        Овкатланиш тартиби. 5 махал. Нонуштани, хар қандай шароитда хам,  асло ўтказиб юборманг. Кўпроқ табиий, парланган, димланган таомлар истеъмол килинг. Хом сабзавот, мевалар (1кунда 400гр сабзавот, 300гр мева),  Смузи  ичишни йўлга қўйинг. Смарт фут - Ақлли озуқалар истеъмол қилишни ўрганинг! Улар сизнинг организмингизни химояда ушлаб туради.",
+        'text' => "*Bu yerga Back End bo'yicha kurslar haqida ma'lumot olishingiz mumkin*",
+        'parse_mode' => 'markdown',
         'reply_markup' => $kurs,
     ]);
 }
 
-if ($tx == "3 - Qoida") {
-    bot ('sendPhoto', [
+if ($tx == "Python") {
+    bot ('sendMessage', [
         'chat_id' => $cid, 
-        'photo' => "https://t.me/valiolog_konsultant/11",
-        'caption' => "3-қоида. 
-        Тозаланиш. Йилида онгли равишда  ичаклар, қон томирлар , капилярларда, хужайра атрофида йигилиб колган туз, токсин, ёг, шлак, айниқса  паразит, инфекция, замбуруғ, бактерия, гижжа қурт ва уларнинг ахлатларидан  катталар йилда 2 марта, болаларимизни 3-4 марта  табиий, ишончли, сифатли маҳсулотларимиз билан  тозалаб туришни йўлга қўйинг. Ўртача бундай ифлосликларни ҳар бир инсонда 15 кг яқин бўлишини тиббиёт тасдиқлайди.",
+        'text' => "*Bu yerga Python bo'yicha kurslar haqida ma'lumot olishingiz mumkin*",
+        'parse_mode' => 'markdown',
         'reply_markup' => $kurs,
     ]);
 }
 
-if ($tx == "4 - Qoida") {
-    bot ('sendPhoto', [
+if ($tx == "Go lang") {
+    bot ('sendMessage', [
         'chat_id' => $cid, 
-        'photo' => "https://t.me/valiolog_konsultant/12",
-        'caption' => "4-қоида. 
-        Харакат. Асосан пиёда  юришга одатланинг. Кунлик норма  5 км дан кам бўлмаслигига аҳамият қаратинг. Модда  алмашинувига,   организмни  хужайра  атрофидаги   токсинлардан     тозаланишига, лимфа системасининг тозаланишига ва организмингиздаги регенирация- хужайралар янгиланиши  жараёнининг сифатли бўлишига  ёрдам беринг.",
+        'text' => "*Bu yerga Go lang bo'yicha kurslar haqida ma'lumot olishingiz mumkin*",
+        'parse_mode' => 'markdown',
         'reply_markup' => $kurs,
     ]);
 }
 
-if ($tx == "5 - Qoida") {
-    bot ('sendPhoto', [
-        'chat_id' => $cid, 
-        'photo' => "https://t.me/valiolog_konsultant/13",
-        'caption' => "5-қоида. 
-        Психология. Сизнинг ўз соғлиғингизга бўлган муносабатингиз !!! Соғлом бўлишингиз учун  энг аввало бу масъулиятни ўз зиммангизга олишингиз шарт!!! Чунки  соғлиғимиз бу бизнинг энг қимматли, энг катта бойлигимиздир!!! Сизни соғлигингиз сиздан бошқа ҳеч кимга керак эмаслигини унутманг!!!",
-        'reply_markup' => $kurs,
-    ]);
-}
-
-if ($tx == "🔙 Ortga qaytish") {
+if ($tx == "orqaga qaytish") {
     bot ('sendMessage', [
         'chat_id' => $cid,
         'text' => "Sizga qanday yordam bera olishim mumkin",
@@ -255,30 +213,142 @@ if ($tx == "🔙 Ortga qaytish") {
     ]);
  }
 
-//Savol javob 
+ // Register
 
-if ($tx == "❓Savol Javob") {
-    bot('sendMessage', [
-        'chat_id' => $cid,
-        'text' => "Ismingizni?\n(Masalan: Akmal",
-        'parse_mode' => 'markdown',
-        'reply_markup' => $otmen,
+ if ($tx == "Ro`yxatdan o`tish") {
+     bot ('sendMessage', [
+         'chat_id' => $cid,
+         'text' => "Ismingiz?\n(Masalan: Akmal)",
+         'parse_mode' => 'markdown',
+         'reply_markup' => $otmen,
+     ]);
+     pstep($cid, "0");
+     put("step/$cid.menu", "register");
+ }
+
+ if ($step == "0" && $menu == "register") {
+     if ($tx == $cencel) {} else {
+         bot('sendMessage', [
+             'chat_id' => $cid,
+             'text' => "Yoshingiz?\n(Masalan: 20)",
+             'parse_mode' => 'markdown',
+             'reply_markup' => $otmen,
+         ]);
+         nextTx($cid, "Shogird: ". $tx);
+         step($cid);
+     }
+ }
+
+ if ($step == "1" && $menu == "register") {
+    if ($tx == $cencel) {} else {
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "Qaysi yo'nalishda o'qimoqchisiz ?\n(Masalan: Python, PHP, SQL)",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $otmen,
+        ]);
+        nextTx($cid, "Yosh: ". $tx);
+        step($cid);
+    }
+}
+
+if ($step == "2" && $menu == "register") {
+    if ($tx == $cencel) {} else {
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "Tanlangan yo'nalish bo'yicha bilim darajangiz qanday?\n(Masalan: Oz moz, Umuman yo'q...)",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $otmen,
+        ]);
+        nextTx($cid, "Texnologiya: ". $tx);
+        step($cid);
+    }
+}
+
+if ($step == "3" && $menu == "register") {
+    if ($tx == $cencel) {} else {
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "Telefon raqamingizni kiriting.\n(+998 97 123 45 67)",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $otmen,
+        ]);
+        nextTx($cid, "Yo'nalish: ". $tx);
+        step($cid);
+    }
+}
+
+if ($step == "4" && $menu == "register") {
+    if ($tx == $cencel) {} else {
+        if (mb_stripos($tx, "9989") !== false) {
+            bot('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "Ma'lumotlar muvaffaqiyatli saqlandi. Iltimos bot faoliya haqida o'z fikringizni bildiring.",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $manzil,
+            ]);
+        nextTx($cid, "Aloqa: ". $tx);
+        step($cid);
+        } else {
+            bot('sendMessage', [
+                'chat_id' => $cid,
+                'text' => "Telefon raqamingizni kiriting?",
+                'parse_mode' => 'markdown',
+                'reply_markup' => $otmen,
+            ]);
+        } 
+    }
+
+    if (isset($data) && $stepe == "5" && $menue == "register") {
+        ACL($ida);
+        $baza == file_get_contents("step/$cbid.txt");
+        bot('sendMessage', [
+            'chat_id' => $cbid,
+            'text' => "<b>Sizning anketa tayyor bo'ldi, barcha ma'lumotlaringizni tasdiqlang?</b> $baza\n Rating: $data",
+            'parse_mode' => 'html',
+            'reply_markup' => $tasdiq,
+        ]);
+        nextTx($cbid, "Rating". $data);
+        step($cbid);
+    }
+}
+
+    if ($data == "ok" && $stepe == "6" && $menue == "register") {
+        ACL($ida);
+        $baza = file_get_contents("step/$cbid.txt");
+        $admin = "941327405";
+        bot ('sendMessage', [
+            'chat_id' => $admin,
+            'text' => "<b>Yangi o'quvchi</b> Username: @$cbuser <a href='tg://user?id = $cbid'> Zaxira profili </a><code>$baza</code>",
+            'parse_mode' => 'html',
+            'reply_markup' => $tasdiq,
+
+        ]);
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "Sizning anketayz qabul qilinidi.",
+            'parse_mode' => 'markdown',
+            'reply_markup' => $keys,
+        ]);
+    }
+
+    del($cbid);
+
+    
+
+if ($tx == $cencel || $data == "clear") {
+    ACL($ida);
+    del($cbid);
+    del($cid);
+    if (isset($tx)) $url == "$cid";
+    if (isset($data)) $url = "$cbid";
+    bot ('sendMessage', [
+        'chat_id' => $url,
+        'text' => "Anketa bekor qilindi",
+        'reply_markup' => $keys,
     ]);
-    pstep($cid, "0");
-    put("step/$cid.menu", "register");
 }
 
-// Yoshi
-if ($step == "0" && $menu == "register") {
-	if ($tx == $cencel) {} else {
-		bot ('sendMessage', [
-		    'chat_id' => $cid,
-			'text' => "Yoshingiz\n(Masalan: 20)",
-			'parse_mode' => 'markdown',
-			'reply_markup' => $otmen,
-		]);
-	nextTx($cid, "Mijoz ismi: ".$tx);
-	step ($cid);
-	}
-}
+
+
 ?>
