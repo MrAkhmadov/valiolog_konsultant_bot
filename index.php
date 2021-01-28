@@ -343,7 +343,7 @@ if ($data == "ok" && $stepe == "5" && $menue == "register") {
     ]);
     bot('sendMessage', [
         'chat_id' => $cbid,
-        'text' => "Sizning savolingiz qabul qilindi iltimos mutaxasis javobini kuting.",
+        'text' => "Sizning savolingiz mutaxasisga yuborildi. Iltimos mutaxasis javobini kuting.",
         'parse_mode' => 'markdown',
         'reply_markup' => $keys,
     ]);
