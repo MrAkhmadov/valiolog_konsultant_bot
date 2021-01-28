@@ -1,5 +1,5 @@
 <?php 
-   <?php 
+
    define('API_KEY', '1552197392:AAGKN5quXP--VsACTr9q7jGS21lcBs_nl0o');
 
    function del($nomi) {
