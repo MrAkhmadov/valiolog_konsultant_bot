@@ -1,6 +1,6 @@
 <?php 
 
-   define('API_KEY', '1628468153:AAHv-8eGRZmBd-6P2OKLo05Wqj265mw7Pzg');
+   define('API_KEY', '1627154573:AAFuxUz1r9mvalTXmd1se-2R1LfCD8DSMfY');
 
    function del($nomi){
     array_map('unlink', glob("step/$nomi.*"));
@@ -340,7 +340,7 @@ if(isset($data) and $stepe == "4" and $menue == "register"){
 if ($data == "ok" && $stepe == "5" && $menue == "register") {
     ACL($ida);
     $baza = file_get_contents("step/$cbid.txt");
-    $admin = "1322664602";
+    $admin = "799913179";
     bot ('sendMessage', [
         'chat_id' => $admin,
         'text' => "<b>Yangi o'quvchi!</b> Username: @$cbuser \n<a href='tg://user?id=$cbid'> Zaxira profili </a><code>$baza</code>",
